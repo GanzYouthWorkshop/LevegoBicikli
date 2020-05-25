@@ -146,7 +146,22 @@ namespace LevegoBicikli
 
         private void OnReceiveSerialData(byte[] data)
         {
-            this.m_Web.EvaluateJavascript($"ext_dataReceived({data[2]})", null);
+
+            this.m_Web.EvaluateJavascript($"ext_dataReceived({this.SerialDataToInt(data)})", null);
+        }
+
+        private int SerialDataToInt(byte[] data)
+        {
+            string text = "";
+            for(int i = 0; i < data.Length - 2; i++)
+            {
+                text += (char)data[i];
+            }
+
+            int value = 0;
+            bool result = int.TryParse(text, out value);
+
+            return value;
         }
     }
 }
