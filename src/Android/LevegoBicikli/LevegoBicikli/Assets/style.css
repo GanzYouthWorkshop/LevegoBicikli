@@ -1,3 +1,15 @@
+:root
+{
+	--color-unknown: #00B7C3;
+	--color-ok: #10893E;
+	--color-error: #E81123;
+	
+	--color-graph: #038387;
+	--color-progress: #038387;
+	--color-button: #8764B8;
+	--color-button-pressed: #744DA9;
+}
+
 #background
 {
     position: absolute;
@@ -17,7 +29,7 @@
     right: 0;
     height: 32px;
 
-    background-color: #42C9FF;
+    background-color: var(--color-unknown);
 }
 
 #current-power
@@ -47,6 +59,8 @@
 
 #score
 {
+	display: block;
+
     font-size: 100px;
     text-align: center;
     line-height: 300px;
@@ -54,16 +68,30 @@
 
 #startstop
 {
+	position: absolute;
+	bottom: 32px;
+
     display: block;
-    background-color: aqua;
-width: 100%;
-height: 48px;
+    background-color: var(--color-button);
+	width: 100%;
+	height: 48px;
+	border: 0;
+	color: #FFFFFF;
+	font-size: 24px;
+}
+
+#startstop:active
+{
+    background-color: var(--color-button-pressed);
 }
 
 #progressbar
 {
-        display: block;
- width: 50%;
-height: 32px;
-background-color: #123456;
+	position: absolute;
+	bottom: 0;
+	
+	display: block;
+	width: 100%;
+	height: 32px;
+	background-color: var(--color-progress);
 }
