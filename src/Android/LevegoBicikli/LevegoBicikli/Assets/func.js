@@ -4,7 +4,7 @@ Android externals
 function ext_dataReceived(data)
 {
   var percent = data / 1024 * 100;
-  $("#current-power").html(data + ' kW');
+  $("#current-power").html(data + ' W');
   $("#current-power").css('background-image', 'linear-gradient(0deg, var(--color-graph) ' + percent + '%, rgba(0, 0, 0, 0) ' + (percent + 20) + '%)');
   
   if(gameRunning)
@@ -78,7 +78,7 @@ function gameStep()
 		}
 		avg /= len;
 		
-		$('#score').html(avg.toFixed(2) + "kWh")
+		$('#score').html(avg.toFixed(2) + " Wh")
 	}
 	else
 	{

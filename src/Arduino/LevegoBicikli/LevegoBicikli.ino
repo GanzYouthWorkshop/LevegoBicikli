@@ -9,9 +9,9 @@
 //***************************************************************************************
 #define HARDWARE_TYPE MD_MAX72XX::PAROLA_HW
 #define MAX_DEVICES   8
-#define CURRENT_SENSOR_PIN A3
+#define CURRENT_SENSOR_PIN A0
 #define SS_DISPLAY_PIN 2
-#define CURREMT_VALUES_COUNT 16
+#define CURREMT_VALUES_COUNT 32
 
 //***************************************************************************************
 //Constants
@@ -76,7 +76,7 @@ void loop()
   last_current_value = 0;
   for(int i = 0; i < CURREMT_VALUES_COUNT; i++)
   {
-    last_current_value += analogRead(CURRENT_SENSOR_PIN) - 256;
+    last_current_value += abs(analogRead(CURRENT_SENSOR_PIN) - 513);
   }
   last_current_value /= CURREMT_VALUES_COUNT;
 
