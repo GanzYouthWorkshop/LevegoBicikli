@@ -76,9 +76,14 @@ void loop()
   last_current_value = 0;
   for(int i = 0; i < CURREMT_VALUES_COUNT; i++)
   {
-    last_current_value += abs(analogRead(CURRENT_SENSOR_PIN) - 513);
+    int read = abs(analogRead(CURRENT_SENSOR_PIN)) * 5;
+    if(last_current_value < read)
+    {
+      last_current_value = read;
+    }
+    delay(1);
   }
-  last_current_value /= CURREMT_VALUES_COUNT;
+ // last_current_value /= CURREMT_VALUES_COUNT;
 
   //Kimenő jel beállítása - valós vagy szimuláció
   int value = simulation_enabled ? simulated_value : last_current_value;
@@ -125,4 +130,3 @@ void handle_spi_display()
 
   mx.control(MD_MAX72XX::UPDATE, MD_MAX72XX::ON);
 }
-
